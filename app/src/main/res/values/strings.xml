@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Habit Tracker App</string>
+    <string name="text_view">Habit Tracker</string>
 </resources>
