@@ -27,12 +27,7 @@ public class MainActivity extends AppCompatActivity {
                 0
         );
 
-        mDbHelper.insertNewRecord(
-                "Stand 2 minutes",
-                "Stand up for a certain amount of time during the day"
-        );
-
-        mDbHelper.insertNewRecord("Have a walk with the dog");
+        mDbHelper.insertNewRecord("Stand up for 2 minutes");
 
         // Query all records
         Cursor cursor = mDbHelper.queryAllRecords();
@@ -43,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         int descColumnIndex = cursor.getColumnIndex(HabitEntry.COLUMN_HABIT_DESC);
         int countColumnIndex = cursor.getColumnIndex(HabitEntry.COLUMN_HABIT_COUNT);
 
+        // loop through all the records of the cursor and print it in the console
         try {
             while (cursor.moveToNext()) {
                 String habitString = "Habit No: " +

@@ -14,6 +14,7 @@ import com.greiner_co.habittrackerapp.data.HabitContract.HabitEntry;
  * Created by Jens Greiner on 08.07.17.
  */
 
+@SuppressWarnings("SameParameterValue")
 public class HabitDbHelper extends SQLiteOpenHelper {
 
     private static final String LOG_TAG = HabitDbHelper.class.getSimpleName();
@@ -46,7 +47,7 @@ public class HabitDbHelper extends SQLiteOpenHelper {
         // nothing to do yet, database is still version 1
     }
 
-    public long insertNewRecord(String title, String description, int counter) {
+    public void insertNewRecord(String title, String description, int counter) {
         SQLiteDatabase db = getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -58,16 +59,10 @@ public class HabitDbHelper extends SQLiteOpenHelper {
         long newRowId = db.insert(HabitEntry.TABLE_NAME, null, values);
 
         Log.v(LOG_TAG, "New row ID: " + newRowId);
-
-        return newRowId;
     }
 
-    public long insertNewRecord(String title, String description) {
-        return this.insertNewRecord(title, description, 0);
-    }
-
-    public long insertNewRecord(String title) {
-        return this.insertNewRecord(title, "", 0);
+    public void insertNewRecord(String title) {
+        this.insertNewRecord(title, "", 0);
     }
 
     public Cursor queryAllRecords() {
